@@ -80,6 +80,22 @@ function WhatsAppBtn({ mobileNumber = "", size = "50px", animate = true, style, 
                     height: '100%',
                 }}
             >
+                <div
+                    style={{
+                        position: 'absolute',
+                        left: '50%',
+                        background: '#fff',
+                        borderRadius: '50%',
+                        top: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        width: '80%',
+                        display: 'flex',
+                        justifyContent: "center",
+                        alignItems: 'center',
+                        height: '80%',
+                        zIndex: -1,
+                    }}
+                ></div>
                 <IoLogoWhatsapp style={{ fontSize, color: 'green', fontWeight: 'bold' }} />
             </div>
         </a>
