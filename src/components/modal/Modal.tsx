@@ -6,7 +6,7 @@ interface IFixedNav {
     show: boolean,
     isClosed?: (close: boolean) => void,
     overlayClose?: boolean,
-    children: React.ReactNode,
+    children: React.ReactElement,
     position?: string,
     fromToCenter?: string,
     showActions?: boolean,
