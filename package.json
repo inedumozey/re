@@ -1,7 +1,7 @@
 {
   "name": "@mozeyinedu/react-lab",
-  "version": "0.3.7",
-  "description": "Contains 2 react components, these will grow in the future",
+  "version": "0.4.0",
+  "description": "Contains 3 react components, these will grow in the future",
     "main": "lib/esm/index.js",
     "module": "lib/cjs/index.js",
     "files": [
@@ -17,7 +17,7 @@
       "url": "https://github.com/inedumozey/react-lab.git"
     },
     "keywords": [
-      "mozeyinedu DrMo typescript inedumozey mozey react-lab switch whatsAppBtn whatsappbtn whatsApp button"
+      "mozeyinedu", "DrMo", "typescript", "inedumozey", "mozey", "react-lab", "switch", "whatsAppBtn", "whatsappbtn", "whatsApp", "button", "Modal", "side menu"
     ],
     "author": "mozeyinedu",
     "license": "MIT",

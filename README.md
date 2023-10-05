@@ -1,5 +1,5 @@
 # Rreact-lab
-React-lab contains Switch and WhatsAppBtn components
+React-lab contains Switch, WhatsAppBtn and Modal components
 
 
 ## Switch Components
