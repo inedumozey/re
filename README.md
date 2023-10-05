@@ -126,3 +126,112 @@ For example, you want to place the button in a div in a contact page, it should 
 </div>
 
 ```
+
+# Modal
+`npm i @mozeyinedu/react-lab`
+`yarn add @mozeyinedu/react-lab`
+
+## Usage
+`import {Modal} from "@mozeyinedu/react-lab"`
+
+`<Modal props={...}>...</Modal>`
+
+### Props
+1. show: It's required. It toggles the modal. It accepts boolean: `true` or `false`
+2. position: Where to set the modal. It accepts `'center'`, `'top'`, `'right'`, `'bottom'` and `'left'` (default is `'left'`). Default is set to `'left'`
+3. fromToCenter: This only works when position is set to `'center'`. It accepts string: `'top'` and `'bottom'`. This tells where the modal comes from. Default is set to `'top`
+4. children: child prop. It is required
+5. overlayClose: It accepts boolean: `true` or `false`. It tells whether the modal should be closed when the overlay is clicked. Default is set to be `true`
+6. showActions: It accepts boolean: `true` or `false`. It tells whether to show `'Cancel Button` and `Confirm Button` buttons. This only works when position is set to `'center'` Default is set to be `false`
+7. isClosed: A callback function, it is called back when the modal is closed
+8. isConfirmed: A callback funtion, it is called back when `Cancel Button` is clicked
+9. isCancelled: A callback funtion, it is called back when `Cancel Button` is clicked
+10. background: Background of the modal. Default is white
+11. iconColor: Close icon background. Default is #aaa
+12. cancelBtnColor: Cancelled Button background color. Default is `'red'`
+13. confirmBtnColor: Confirmed Button background color. Default is `'#10b981'` (Emerald green)
+14. ActionButtonTextColor: Action buttons (`'Cancelled Button` & `'Confirmed Button`) text color: Default is `'#fff`.
+
+
+```
+    import React, { useState } from 'react'
+    import Modal from '@/components/Modal';
+
+    export default function SideNav() {
+        const [openModal, setOpenModal] = useState(false)
+
+        function handleOpenModal() {
+            setOpenModal(true)
+        }
+
+        return (
+            <div>
+                <button onClick={handleOpenModal}>Open modal</button>
+
+                <Modal
+                    show={openModal} // toggles the modal, accepts true or false
+                    iconColor="red" // close icon color (default is #aaa)
+                    fromToCenter="bottom" // accepts only top or bottom, only works when position is set to center
+                    background="#fff" // bg color, it does not affect the children background's color
+                    position='center' // other options are top, right, bottom and left (default is left)
+                    showActions={true} // to show cancel and confirm buttons, only works when position is set to center, top or bottom
+                    isClosed={(e) => { setOpenModal(false); console.log(e) }} // callback when modal is closed, returns true
+                    isConfirmed={(status) => {
+                        if (status == true) {
+                            setOpenModal(false)
+                        }
+                    }}
+                    isCancelled={(status) => {
+                        if (status == true) {
+                            setOpenModal(false)
+                        }
+                    }}
+                >
+                    <div className='w-[300px] h-[200px]'>Modal Children</div>
+                </Modal>
+            </div >
+        )
+    }
+```
+![center-1.png]("./assets/center-1.png")
+
+
+```
+    import React, { useState } from 'react'
+    import Modal from '@/components/Modal';
+
+    export default function SideNav() {
+        const [openModal, setOpenModal] = useState(false)
+
+        function handleOpenModal() {
+            setOpenModal(true)
+        }
+
+        return (
+            <div>
+                <button onClick={handleOpenModal}>Open modal</button>
+
+                <Modal
+                    show={openModal}
+                    iconColor="red"
+                    background="#fff"
+                    position='left'
+                    isClosed={(e) => { setOpenModal(false); console.log(e) }} // callback when modal is closed, returns true
+                    isConfirmed={(status) => {
+                        if (status == true) {
+                            setOpenModal(false)
+                        }
+                    }}
+                    isCancelled={(status) => {
+                        if (status == true) {
+                            setOpenModal(false)
+                        }
+                    }}
+                >
+                    <div className='w-[300px] h-[200px]'>Modal Children</div>
+                </Modal>
+            </div >
+        )
+    }
+```
+![left.png]("./assets/left.png")
