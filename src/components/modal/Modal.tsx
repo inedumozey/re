@@ -12,6 +12,7 @@ interface IFixedNav {
     showActions?: boolean,
     background?: string,
     iconColor?: string,
+    opacity?: string | number,
     cancelBtnColor?: string,
     confirmBtnColor?: string,
     actionButtonTextColor?: string,
@@ -31,6 +32,7 @@ export default function Modal(
         position = "left",
         background = "#fff",
         cancelBtnColor = "red",
+        opacity = '.6',
         confirmBtnColor = "#10b981",
         iconColor = "#aaa",
         actionButtonTextColor = "#fff",
@@ -140,7 +142,7 @@ export default function Modal(
             </div>
 
             {/* overlay */}
-            <div onClick={() => overlayClose ? setHide(true) : ''} style={{ transition: 'all .3s', position: 'fixed', zIndex: 1000, top: 0, left: 0, bottom: 0, right: 0, background: 'rgba(0,0,0,.7)', display: hide ? 'none' : 'block' }}></div>
+            <div onClick={() => overlayClose ? setHide(true) : ''} style={{ transition: 'all .3s', position: 'fixed', zIndex: 1000, top: 0, left: 0, bottom: 0, right: 0, background: `rgba(0,0,0 ${opacity})`, display: hide ? 'none' : 'block' }}></div>
         </>
     )
 }
