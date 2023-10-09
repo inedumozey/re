@@ -17,15 +17,14 @@ export default function Alert(
 ) {
     const [hide, setHide] = useState(true)
 
-    const handleClose = () => onClosed!(hide)
+    const handleClose = () => {
+        setHide(true)
+        onClosed!(hide)
+    }
 
     useEffect(() => {
         setHide(() => show ? false : true)
     }, [show])
-
-    useEffect(() => {
-        handleClose();
-    }, [hide])
 
     return (
         <>
@@ -73,7 +72,7 @@ export default function Alert(
                 }}
             >
                 <MdClose
-                    onClick={() => setHide(true)}
+                    onClick={() => handleClose}
                     style={{
                         color: (function () {
                             if (type === 'warning') {
