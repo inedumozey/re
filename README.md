@@ -128,8 +128,6 @@ For example, you want to place the button in a div in a contact page, it should 
 ```
 
 # Modal
-`npm i @mozeyinedu/react-lab`
-`yarn add @mozeyinedu/react-lab`
 
 ## Usage
 `import {Modal} from "@mozeyinedu/react-lab"`
@@ -143,9 +141,9 @@ For example, you want to place the button in a div in a contact page, it should 
 4. children: child prop. It is required
 5. overlayClose: It accepts boolean: `true` or `false`. It tells whether the modal should be closed when the overlay is clicked. Default is set to be `true`
 6. showActions: It accepts boolean: `true` or `false`. It tells whether to show `'Cancel Button` and `Confirm Button` buttons. This only works when position is set to `'center'` Default is set to be `false`
-7. isClosed: A callback function, it is called back when the modal is closed
-8. isConfirmed: A callback funtion, it is called back when `Cancel Button` is clicked
-9. isCancelled: A callback funtion, it is called back when `Cancel Button` is clicked
+7. onClosed: A callback function, it is called back when the modal is closed
+8. onConfirmed: A callback funtion, it is called back when `Cancel Button` is clicked
+9. onCancelled: A callback funtion, it is called back when `Cancel Button` is clicked
 10. background: Background of the modal. Default is white
 11. iconColor: Close icon background. Default is #aaa
 12. cancelBtnColor: Cancelled Button background color. Default is `'red'`
@@ -176,13 +174,13 @@ For example, you want to place the button in a div in a contact page, it should 
                     background="#fff" // bg color, it does not affect the children background's color
                     position='center' // other options are top, right, bottom and left (default is left)
                     showActions={true} // to show cancel and confirm buttons, only works when position is set to center, top or bottom
-                    isClosed={(e) => { setOpenModal(false); console.log(e) }} // callback when modal is closed, returns true
-                    isConfirmed={(status) => {
+                    onClosed={(e) => { setOpenModal(false); console.log(e) }} // callback when modal is closed, returns true
+                    onConfirmed={(status) => {
                         if (status == true) {
                             setOpenModal(false)
                         }
                     }}
-                    isCancelled={(status) => {
+                    onCancelled={(status) => {
                         if (status == true) {
                             setOpenModal(false)
                         }
@@ -217,17 +215,7 @@ For example, you want to place the button in a div in a contact page, it should 
                     iconColor="red"
                     background="#fff"
                     position='left'
-                    isClosed={(e) => { setOpenModal(false); console.log(e) }} // callback when modal is closed, returns true
-                    isConfirmed={(status) => {
-                        if (status == true) {
-                            setOpenModal(false)
-                        }
-                    }}
-                    isCancelled={(status) => {
-                        if (status == true) {
-                            setOpenModal(false)
-                        }
-                    }}
+                    onClosed={(e) => { setOpenModal(false); console.log(e) }} // callback when modal is closed, returns true
                 >
                     <div className='w-[300px] h-[200px]'>Modal Children</div>
                 </Modal>
@@ -236,3 +224,35 @@ For example, you want to place the button in a div in a contact page, it should 
     }
 ```
 ![left.png]("./assets/left.png")
+
+
+
+# Modal
+
+## Usage
+`import {Alert} from "@mozeyinedu/react-lab"`
+
+`<Alert props={...}>...</Alert>`
+
+### Props
+1. show: It's required. It toggles the Alert. It accepts boolean: `true` or `false`
+2. type: `'success`, `'warning`, `'error`. Default is `'success`
+3. 7. onClosed: A callback function, it is called back when the alert is closed
+
+```
+    import React from 'react'
+    type TMsg = {
+        type: string,
+        isMsg: boolean,
+        msg: string
+    }
+    
+    export default function Component() {
+        const [msg, setMsg] = useState<TMsg>({ isMsg: false, type: "warning", msg: "" })
+        return (
+            <Alert show={msg.isMsg} type={msg.type} onClosed={(status) => console.log(status)}>
+                <div>hello</div>
+            </Alert>
+        )
+    }
+```

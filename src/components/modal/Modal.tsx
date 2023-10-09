@@ -4,7 +4,7 @@ import { MdClose } from 'react-icons/md'
 
 interface IFixedNav {
     show: boolean,
-    isClosed?: (close: boolean) => void,
+    onClosed?: (close: boolean) => void,
     overlayClose?: boolean,
     children: React.ReactElement,
     position?: string,
@@ -16,8 +16,8 @@ interface IFixedNav {
     cancelBtnColor?: string,
     confirmBtnColor?: string,
     actionButtonTextColor?: string,
-    isConfirmed?: (close: boolean) => void,
-    isCancelled?: (close: boolean) => void,
+    onConfirmed?: (close: boolean) => void,
+    onCancelled?: (close: boolean) => void,
 }
 
 export default function Modal(
@@ -26,9 +26,9 @@ export default function Modal(
         overlayClose = true,
         showActions = false,
         children,
-        isClosed = () => { },
-        isConfirmed = () => { },
-        isCancelled = () => { },
+        onClosed = () => { },
+        onConfirmed = () => { },
+        onCancelled = () => { },
         position = "left",
         background = "#fff",
         cancelBtnColor = "red",
@@ -50,13 +50,13 @@ export default function Modal(
         body.style.overflow = hide ? 'auto' : 'hidden'
     }, [hide])
 
-    const handleClose = () => isClosed!(hide)
+    const handleClose = () => onClosed!(hide)
 
     const handleConfirm = () => {
-        isConfirmed!(true)
+        onConfirmed!(true)
     }
     const handleCancel = () => {
-        isCancelled!(true)
+        onCancelled!(true)
     }
 
     return (
@@ -127,7 +127,7 @@ export default function Modal(
                 />
                 {
                     position == "center" || position == "top" || position == "bottom" ?
-                        <div style={{ background: 'teal' }}>
+                        <div style={{ background }}>
                             {children}
                             {
                                 showActions ?
