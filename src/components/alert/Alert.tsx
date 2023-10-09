@@ -72,7 +72,7 @@ export default function Alert(
                 }}
             >
                 <MdClose
-                    onClick={() => handleClose}
+                    onClick={handleClose}
                     style={{
                         color: (function () {
                             if (type === 'warning') {

@@ -124,7 +124,7 @@ export default function Modal(
                 }}
             >
                 <MdClose
-                    onClick={() => handleClose}
+                    onClick={handleClose}
                     style={{ fontSize: '1rem', fontWeight: 'bold', color: iconColor, position: 'absolute', right: '0', top: '0', cursor: 'pointer' }}
                 />
                 {
