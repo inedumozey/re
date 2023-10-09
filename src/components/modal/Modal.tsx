@@ -26,7 +26,7 @@ export default function Modal(
         overlayClose = true,
         showActions = false,
         children,
-        isClosed,
+        isClosed = () => { },
         isConfirmed = () => { },
         isCancelled = () => { },
         position = "left",
