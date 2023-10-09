@@ -45,12 +45,14 @@ export default function Modal(
     }, [show])
 
     useEffect(() => {
-        handleClose();
         const body = document.querySelector('body')!
         body.style.overflow = hide ? 'auto' : 'hidden'
     }, [hide])
 
-    const handleClose = () => onClosed!(hide)
+    const handleClose = () => {
+        setHide(true)
+        onClosed!(hide)
+    }
 
     const handleConfirm = () => {
         onConfirmed!(true)
@@ -122,7 +124,7 @@ export default function Modal(
                 }}
             >
                 <MdClose
-                    onClick={() => setHide(true)}
+                    onClick={() => handleClose}
                     style={{ fontSize: '1rem', fontWeight: 'bold', color: iconColor, position: 'absolute', right: '0', top: '0', cursor: 'pointer' }}
                 />
                 {
@@ -142,7 +144,7 @@ export default function Modal(
             </div>
 
             {/* overlay */}
-            <div onClick={() => overlayClose ? setHide(true) : ''} style={{ transition: 'all .3s', position: 'fixed', zIndex: 1000, top: 0, left: 0, bottom: 0, right: 0, background: `rgba(0,0,0,${opacity})`, display: hide ? 'none' : 'block' }}></div>
+            <div onClick={() => overlayClose ? handleClose() : ''} style={{ transition: 'all .3s', position: 'fixed', zIndex: 1000, top: 0, left: 0, bottom: 0, right: 0, background: `rgba(0,0,0,${opacity})`, display: hide ? 'none' : 'block' }}></div>
         </>
     )
 }
