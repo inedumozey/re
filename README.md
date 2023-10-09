@@ -151,6 +151,7 @@ For example, you want to place the button in a div in a contact page, it should 
 12. cancelBtnColor: Cancelled Button background color. Default is `'red'`
 13. confirmBtnColor: Confirmed Button background color. Default is `'#10b981'` (Emerald green)
 14. ActionButtonTextColor: Action buttons (`'Cancelled Button` & `'Confirmed Button`) text color: Default is `'#fff`.
+15. opacity: accept 0, 0.1, 0.2 ..., 1. Default is `'0.6`
 
 
 ```
