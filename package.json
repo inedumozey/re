@@ -1,41 +1,52 @@
 {
   "name": "@mozeyinedu/react-lab",
-  "version": "0.4.7",
+  "version": "0.5.0",
   "description": "Contains 3 react components, these will grow in the future",
-    "main": "lib/esm/index.js",
-    "module": "lib/cjs/index.js",
-    "files": [
-      "lib"
-    ],
-    "scripts": {
-      "build": "rm -rf lib/ && npm run build:esm && npm run build:cjs",
-      "build:esm": "tsc",
-      "build:cjs": "tsc --module CommonJs --outDir lib/cjs"
-    },
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/inedumozey/react-lab.git"
-    },
-    "keywords": [
-      "mozeyinedu", "DrMo", "typescript", "inedumozey", "mozey", "react-lab", "switch", "whatsAppBtn", "whatsappbtn", "whatsApp", "button", "Modal", "side menu"
-    ],
-    "author": "mozeyinedu",
-    "license": "MIT",
-    "bugs": {
-      "url": "https://github.com/inedumozey/react-lab/issues"
-    },
-    "homepage": "https://github.com/inedumozey/react-lab/issues",
-    "dependencies": {
-      "react-icons": "^4.11.0"
-    },
-    "devDependencies": {
-      "@types/node": "^20.8.0",
-      "@types/react": "^18.2.24",
-      "react": "^18.2.0",
-      "typescript": "^5.2.2"
-    },
-    "peerDependencies": {
-      "react": "*"
-    }
+  "main": "lib/esm/index.js",
+  "module": "lib/cjs/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "rm -rf lib/ && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module CommonJs --outDir lib/cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inedumozey/react-lab.git"
+  },
+  "keywords": [
+    "mozeyinedu",
+    "DrMo",
+    "typescript",
+    "inedumozey",
+    "mozey",
+    "react-lab",
+    "switch",
+    "whatsAppBtn",
+    "whatsappbtn",
+    "whatsApp",
+    "button",
+    "Modal",
+    "side menu"
+  ],
+  "author": "mozeyinedu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/inedumozey/react-lab/issues"
+  },
+  "homepage": "https://github.com/inedumozey/react-lab/issues",
+  "dependencies": {
+    "react-icons": "^4.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "@types/react": "^18.2.28",
+    "react": "^18.2.0",
+    "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "react": "*"
   }
-  
+}

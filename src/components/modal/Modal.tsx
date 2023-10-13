@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { MdClose } from 'react-icons/md'
 
 
-interface IFixedNav {
+interface IModal {
     show: boolean,
-    onClosed?: (close: boolean) => void,
+    onClosed?: (state: boolean) => void,
     overlayClose?: boolean,
-    children: React.ReactElement,
+    children: React.ReactNode,
     position?: string,
     fromToCenter?: string,
     showActions?: boolean,
@@ -16,8 +16,8 @@ interface IFixedNav {
     cancelBtnColor?: string,
     confirmBtnColor?: string,
     actionButtonTextColor?: string,
-    onConfirmed?: (close: boolean) => void,
-    onCancelled?: (close: boolean) => void,
+    onConfirmed?: (state: boolean) => void,
+    onCancelled?: (state: boolean) => void,
 }
 
 export default function Modal(
@@ -36,7 +36,7 @@ export default function Modal(
         confirmBtnColor = "#10b981",
         iconColor = "#aaa",
         actionButtonTextColor = "#fff",
-        fromToCenter = "top" }: IFixedNav
+        fromToCenter = "top" }: IModal
 ) {
     const [hide, setHide] = useState(true)
 
@@ -51,14 +51,14 @@ export default function Modal(
 
     const handleClose = () => {
         setHide(true)
-        onClosed!(hide)
+        onClosed(true)
     }
 
     const handleConfirm = () => {
-        onConfirmed!(true)
+        onConfirmed(true)
     }
     const handleCancel = () => {
-        onCancelled!(true)
+        onCancelled(true)
     }
 
     return (
