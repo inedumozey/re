@@ -1,6 +1,5 @@
 import { IoLogoWhatsapp } from 'react-icons/io'
 import * as React from "react";
-import './style.css'
 import getFontSize from '../../utils/getFontSize';
 import getPixel from '../../utils/getPixel';
 

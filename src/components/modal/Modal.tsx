@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, ReactElement, ReactNode } from 'react'
 import { MdClose } from 'react-icons/md'
 
 
@@ -6,7 +6,7 @@ interface IModal {
     show: boolean,
     onClosed?: (state: boolean) => void,
     overlayClose?: boolean,
-    children: React.ReactNode,
+    children: ReactNode | string,
     position?: string,
     fromToCenter?: string,
     showActions?: boolean,
