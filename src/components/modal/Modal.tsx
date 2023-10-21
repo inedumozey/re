@@ -18,6 +18,9 @@ interface IModal {
     actionButtonTextColor?: string,
     onConfirmed?: (state: boolean) => void,
     onCancelled?: (state: boolean) => void,
+    groupChatLink?: string,
+    zIndex?: number | string,
+    style: React.CSSProperties
 }
 
 export default function Modal(
@@ -36,7 +39,7 @@ export default function Modal(
         confirmBtnColor = "#10b981",
         iconColor = "#aaa",
         actionButtonTextColor = "#fff",
-        fromToCenter = "top" }: IModal
+        fromToCenter = "top", zIndex = 1000000, style = {} }: IModal,
 ) {
     const [hide, setHide] = useState(true)
 
@@ -66,9 +69,9 @@ export default function Modal(
             <div
                 style={{
                     color: '#000',
-                    zIndex: 1001,
                     position: 'fixed',
                     transition: 'all .3s',
+                    zIndex: +zIndex + 1,
                     top: (function (): any {
                         if (position != 'bottom' && position != 'center') {
                             return '0'
@@ -121,6 +124,7 @@ export default function Modal(
                             return `${hide ? 'translateX(-100%)' : 'translateX(0)'}`
                         }
                     }()),
+                    ...style
                 }}
             >
                 <MdClose
@@ -144,7 +148,7 @@ export default function Modal(
             </div>
 
             {/* overlay */}
-            <div onClick={() => overlayClose ? handleClose() : ''} style={{ transition: 'all .3s', position: 'fixed', zIndex: 1000, top: 0, left: 0, bottom: 0, right: 0, background: `rgba(0,0,0,${opacity})`, display: hide ? 'none' : 'block' }}></div>
+            <div onClick={() => overlayClose ? handleClose() : ''} style={{ transition: 'all .3s', position: 'fixed', zIndex, top: 0, left: 0, bottom: 0, right: 0, background: `rgba(0,0,0,${opacity})`, display: hide ? 'none' : 'block' }}></div>
         </>
     )
 }

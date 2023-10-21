@@ -9,7 +9,8 @@ interface IWhatsAppBtn {
     animate?: boolean,
     style?: React.CSSProperties,
     position?: string,
-    groupChatLink?: string
+    groupChatLink?: string,
+    zIndex?: number | string
 }
 
 interface Iposition {
@@ -19,7 +20,7 @@ interface Iposition {
     transform?: string,
 }
 
-function WhatsAppBtn({ mobileNumber = "", size = "50px", animate = true, style, position = "", groupChatLink = "" }: IWhatsAppBtn) {
+function WhatsAppBtn({ mobileNumber = "", size = "50px", animate = true, style, position = "", groupChatLink = "", zIndex = 1000000 }: IWhatsAppBtn) {
     let px = getPixel(size)
     const fontSize = getFontSize(px)
 
@@ -45,8 +46,8 @@ function WhatsAppBtn({ mobileNumber = "", size = "50px", animate = true, style, 
             style={{
                 position: 'fixed',
                 ...positionPoint,
-                zIndex: '1000',
                 ...style,
+                zIndex: +zIndex + 1,
                 display: 'flex',
                 cursor: 'pointer',
                 width: size,

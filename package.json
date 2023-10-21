@@ -1,16 +1,16 @@
 {
   "name": "@mozeyinedu/react-lab",
-  "version": "0.5.32",
+  "version": "0.5.38",
   "description": "Contains 3 react components, these will grow in the future",
-  "module": "lib/esm/index.js",
-  "main": "lib/cjs/index.js",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
   "files": [
-    "lib"
+    "lib/"
   ],
   "scripts": {
-    "build": "rm -rf lib/ && npm run build:esm && npm run build:cjs",
-    "build:esm": "tsc",
-    "build:cjs": "tsc --module CommonJs --outDir lib/cjs"
+    "build": "rm -rf lib/ && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
+    "publish": "npm publish --access public",
+    "push": "git add . && git commit -m 'updated' && git push origin master"
   },
   "repository": {
     "type": "git",
