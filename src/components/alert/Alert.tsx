@@ -1,5 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import { MdClose } from 'react-icons/md'
+import { MdClose } from 'react-icons/md';
+
+interface IColor {
+    bgColor_error: any
+    borderColor_error: any
+    bgColor_success: any
+    borderColor_success: any
+    bgColor_warning: any
+    borderColor_warning: any
+}
+
+const colors: IColor = {
+    bgColor_error: "rgb(136 21 21 / 30%)",
+    borderColor_error: "rgb(245 87 87)",
+    bgColor_success: "rgb(156 233 159 / 30%)",
+
+    borderColor_success: "rgb(86 159 3)",
+    bgColor_warning: "rgb(247 244 158 / 75%)",
+    borderColor_warning: "rgb(199 166 8)",
+}
 
 interface IFixedNav {
     show: boolean,
@@ -36,37 +55,37 @@ export default function Alert(
                     position: 'relative',
                     background: (function () {
                         if (type === 'warning') {
-                            return 'rgb(247 244 158 / 75%)'
+                            return colors.bgColor_warning
                         }
                         else if (type === 'error') {
-                            return 'rgb(255 152 152 / 30%)'
+                            return colors.bgColor_error
                         }
                         else {
-                            return 'rgb(156 233 159 / 30%)'
+                            return colors.bgColor_success
                         }
                     }()),
                     fontSize: '.8rem',
                     color: (function () {
                         if (type === 'warning') {
-                            return 'rgb(199 166 8)'
+                            return colors.borderColor_success
                         }
                         else if (type === 'error') {
-                            return 'rgb(227 6 6)'
+                            return colors.borderColor_error
                         }
                         else {
-                            return 'rgb(86 159 3)'
+                            return colors.borderColor_success
                         }
                     }()),
                     borderRadius: '5px',
                     border: (function () {
                         if (type === 'warning') {
-                            return '1px solid rgb(199 166 8)'
+                            return colors.borderColor_warning
                         }
                         else if (type === 'error') {
-                            return '1px solid rgb(227 6 6)'
+                            return colors.borderColor_error
                         }
                         else {
-                            return '1px solid rgb(86 159 3)'
+                            return colors.borderColor_success
                         }
                     }()),
                 }}
@@ -76,16 +95,16 @@ export default function Alert(
                     style={{
                         color: (function () {
                             if (type === 'warning') {
-                                return '#b1a411'
+                                return colors.borderColor_warning
                             }
                             else if (type === 'error') {
-                                return '#ff0808a1'
+                                return colors.borderColor_error
                             }
                             else {
-                                return '#87d5b8d1'
+                                return colors.borderColor_success
                             }
                         }()),
-                        fontSize: '1.2rem',
+                        fontSize: '1.3rem',
                         padding: '2px',
                         cursor: 'pointer',
                         borderRadius: '50%',
