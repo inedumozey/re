@@ -12,11 +12,10 @@ interface IColor {
 
 const colors: IColor = {
     bgColor_error: "rgb(136 21 21 / 30%)",
-    borderColor_error: "rgb(245 87 87)",
     bgColor_success: "rgb(156 233 159 / 30%)",
-
-    borderColor_success: "rgb(86 159 3)",
     bgColor_warning: "rgb(247 244 158 / 75%)",
+    borderColor_error: "rgb(245 87 87)",
+    borderColor_success: "rgb(86 159 3)",
     borderColor_warning: "rgb(199 166 8)",
 }
 
@@ -79,13 +78,13 @@ export default function Alert(
                     borderRadius: '5px',
                     border: (function () {
                         if (type === 'warning') {
-                            return colors.borderColor_warning
+                            return `1px solid ${colors.borderColor_warning}`
                         }
                         else if (type === 'error') {
-                            return colors.borderColor_error
+                            return `1px solid ${colors.borderColor_error}`
                         }
                         else {
-                            return colors.borderColor_success
+                            return `1px solid ${colors.borderColor_success}`
                         }
                     }()),
                 }}
