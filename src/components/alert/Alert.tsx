@@ -7,16 +7,16 @@ interface IColor {
     bgColor_success: any
     borderColor_success: any
     bgColor_warning: any
-    borderColor_warning: any
+    borderColor_warning: any,
 }
 
 const colors: IColor = {
-    bgColor_error: "rgb(136 21 21 / 30%)",
-    bgColor_success: "rgb(156 233 159 / 30%)",
-    bgColor_warning: "rgb(247 244 158 / 75%)",
-    borderColor_error: "rgb(245 87 87)",
-    borderColor_success: "rgb(86 159 3)",
-    borderColor_warning: "rgb(199 166 8)",
+    bgColor_error: "rgb(254 154 154 / 90%)",
+    bgColor_success: "rgb(145 255 150 / 86%)",
+    bgColor_warning: "rgb(253 249 127)",
+    borderColor_error: "rgb(249 5 5)",
+    borderColor_success: "rgb(33 60 3)",
+    borderColor_warning: "rgb(199 166 8)"
 }
 
 interface IFixedNav {
@@ -24,6 +24,11 @@ interface IFixedNav {
     type?: string,
     children: React.ReactElement | string,
     onClosed?: (close: boolean) => void,
+    float: boolean,
+    position: string,
+    shadow: boolean,
+    width: any,
+    border: boolean
 }
 
 export default function Alert(
@@ -31,7 +36,12 @@ export default function Alert(
         show,
         type = "success",
         children,
-        onClosed = () => { } }: IFixedNav
+        float = false,
+        position = 'top-right',
+        shadow = false,
+        width = '100%',
+        border = true,
+        onClosed = () => { } }: IFixedNav,
 ) {
     const [hide, setHide] = useState(true)
 
@@ -48,10 +58,56 @@ export default function Alert(
         <>
             <div
                 style={{
-                    width: '100%',
+                    zIndex: 50000,
+                    boxShadow: shadow ? 'rgb(123, 107, 122) 1px -1px 9px 0px' : '',
+                    width: width,
                     display: hide ? 'none' : 'block',
                     padding: '12px',
-                    position: 'relative',
+                    position: float ? 'fixed' : 'relative',
+                    top: (function () {
+                        if (position === 'top-left') {
+                            return '5px'
+                        }
+                        else if (position === 'top-right') {
+                            return '5px'
+                        }
+                        else {
+                            return ''
+                        }
+                    }()),
+                    left: (function () {
+                        if (position === 'top-left') {
+                            return '5px'
+                        }
+                        else if (position === 'bottom-left') {
+                            return '5px'
+                        }
+                        else {
+                            return ''
+                        }
+                    }()),
+                    right: (function () {
+                        if (position === 'top-right') {
+                            return '5px'
+                        }
+                        else if (position === 'bottom-right') {
+                            return '5px'
+                        }
+                        else {
+                            return ''
+                        }
+                    }()),
+                    bottom: (function () {
+                        if (position === 'bottom-left') {
+                            return '5px'
+                        }
+                        else if (position === 'bottom-right') {
+                            return '5px'
+                        }
+                        else {
+                            return ''
+                        }
+                    }()),
                     background: (function () {
                         if (type === 'warning') {
                             return colors.bgColor_warning
@@ -76,7 +132,7 @@ export default function Alert(
                         }
                     }()),
                     borderRadius: '5px',
-                    border: (function () {
+                    border: !border ? '' : (function () {
                         if (type === 'warning') {
                             return `1px solid ${colors.borderColor_warning}`
                         }
