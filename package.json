@@ -1,6 +1,6 @@
 {
   "name": "@mozeyinedu/react-lab",
-  "version": "0.6.0",
+  "version": "0.6.2",
   "description": "Contains 3 react components, these will grow in the future",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
@@ -10,7 +10,8 @@
   "scripts": {
     "build": "rm -rf lib/ && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
     "publish": "npm publish --access public",
-    "push": "git add . && git commit -m 'updated' && git push origin master"
+    "push": "git add . && git commit -m 'updated' && git push origin master",
+    "bp": "npm run build && npm run publish"
   },
   "repository": {
     "type": "git",

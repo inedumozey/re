@@ -237,7 +237,7 @@ For example, you want to place the button in a div in a contact page, it should 
 ### Props
 1. show: It's required. It toggles the Alert. It accepts boolean: `true` or `false`
 2. type: `'success`, `'warning`, `'error`. Default is `'success`
-3. 7. onClosed: A callback function, it is called back when the alert is closed
+3. onClosed: A callback function, it is called back when the alert is closed
 
 ```
     import React from 'react'
@@ -248,10 +248,19 @@ For example, you want to place the button in a div in a contact page, it should 
     }
     
     export default function Component() {
-        const [msg, setMsg] = useState<TMsg>({ isMsg: false, type: "warning", msg: "" })
+        
         return (
-            <Alert show={msg.isMsg} type={msg.type} onClosed={(status) => console.log(status)}>
-                <div>hello</div>
+            <Alert
+                show={true}
+                type={'error'} // success or false
+                onClosed={(e) => { console.log(e)}} // fires when Alert is closed
+                float={true} // or true, default is false
+                border={false} // or false
+                shadow={true} // or true
+                position='top-right' // or top left, bottom right or bottom right. this only works when float is set to true, default is top-right
+                width='400px' // default is 100% of its containter
+            >
+                error occured
             </Alert>
         )
     }

@@ -24,11 +24,11 @@ interface IFixedNav {
     type?: string,
     children: React.ReactElement | string,
     onClosed?: (close: boolean) => void,
-    float: boolean,
-    position: string,
-    shadow: boolean,
-    width: any,
-    border: boolean
+    float?: boolean,
+    position?: string,
+    shadow?: boolean,
+    width?: any,
+    border?: boolean
 }
 
 export default function Alert(
@@ -38,9 +38,9 @@ export default function Alert(
         children,
         float = false,
         position = 'top-right',
-        shadow = false,
+        shadow = true,
         width = '100%',
-        border = true,
+        border = false,
         onClosed = () => { } }: IFixedNav,
 ) {
     const [hide, setHide] = useState(true)
@@ -59,7 +59,7 @@ export default function Alert(
             <div
                 style={{
                     zIndex: 50000,
-                    boxShadow: shadow ? 'rgb(123, 107, 122) 1px -1px 9px 0px' : '',
+                    boxShadow: shadow ? '1px -1px 9px 0px rgb(123, 107, 122)' : '',
                     width: width,
                     display: hide ? 'none' : 'block',
                     padding: '12px',
@@ -132,7 +132,7 @@ export default function Alert(
                         }
                     }()),
                     borderRadius: '5px',
-                    border: !border ? '' : (function () {
+                    border: !border ? 'none' : (function () {
                         if (type === 'warning') {
                             return `1px solid ${colors.borderColor_warning}`
                         }
