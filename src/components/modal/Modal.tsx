@@ -66,13 +66,12 @@ export default function Modal(
 
     return (
         <>
-            <span
+            <div
                 style={{
                     color: '#000',
                     position: 'fixed',
                     transition: 'all .3s',
-                    display: 'inline-block',
-                    width: 'auto',
+                    minWidth: '20px',
                     zIndex: +zIndex + 1,
                     top: (function (): any {
                         if (position != 'bottom' && position != 'center') {
@@ -150,7 +149,7 @@ export default function Modal(
                         </div> :
                         <div style={{ background }}>{children}</div>
                 }
-            </span>
+            </div>
 
             {/* overlay */}
             <div onClick={() => overlayClose ? handleClose() : ''} style={{ transition: 'all .3s', position: 'fixed', zIndex, top: 0, left: 0, bottom: 0, right: 0, background: `rgba(0,0,0,${opacity})`, display: hide ? 'none' : 'block' }}></div>
