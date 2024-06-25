@@ -36,7 +36,7 @@ export default function Modal(
         background = "transparent",
         cancelButtonColor = "red",
         opacity = '.6',
-        showCloseButton = false,
+        showCloseButton = true,
         confirmButtonColor = "#10b981",
         iconColor = "#aaa",
         actionButtonTextColor = "#fff",
@@ -71,7 +71,6 @@ export default function Modal(
                     color: '#000',
                     position: 'fixed',
                     transition: 'all .3s',
-                    display: 'inline-block',
                     zIndex: +zIndex + 1,
                     top: (function (): any {
                         if (position != 'bottom' && position != 'center') {
