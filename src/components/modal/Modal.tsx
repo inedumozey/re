@@ -71,7 +71,7 @@ export default function Modal(
                     color: '#000',
                     position: 'fixed',
                     transition: 'all .3s',
-                    minWidth: '20px',
+                    display: 'inline-block',
                     zIndex: +zIndex + 1,
                     top: (function (): any {
                         if (position != 'bottom' && position != 'center') {
