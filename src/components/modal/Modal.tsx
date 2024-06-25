@@ -1,11 +1,11 @@
-import React, { useEffect, useState, ReactElement, ReactNode } from 'react'
+import React, { useEffect, useState, ReactNode } from 'react'
 import { MdClose } from 'react-icons/md'
-
 
 interface IModal {
     show: boolean,
     onClosed?: (state: boolean) => void,
     overlayClose?: boolean,
+    showCloseButton?: boolean,
     children: ReactNode | string,
     position?: string,
     fromToCenter?: string,
@@ -13,14 +13,14 @@ interface IModal {
     background?: string,
     iconColor?: string,
     opacity?: string | number,
-    cancelBtnColor?: string,
-    confirmBtnColor?: string,
+    cancelButtonColor?: string,
+    confirmButtonColor?: string,
     actionButtonTextColor?: string,
     onConfirmed?: (state: boolean) => void,
     onCancelled?: (state: boolean) => void,
     groupChatLink?: string,
     zIndex?: number | string,
-    style: React.CSSProperties
+    style?: React.CSSProperties
 }
 
 export default function Modal(
@@ -33,10 +33,11 @@ export default function Modal(
         onConfirmed = () => { },
         onCancelled = () => { },
         position = "left",
-        background = "#fff",
-        cancelBtnColor = "red",
+        background = "transparent",
+        cancelButtonColor = "red",
         opacity = '.6',
-        confirmBtnColor = "#10b981",
+        showCloseButton = false,
+        confirmButtonColor = "#10b981",
         iconColor = "#aaa",
         actionButtonTextColor = "#fff",
         fromToCenter = "top", zIndex = 1000000, style = {} }: IModal,
@@ -56,7 +57,6 @@ export default function Modal(
         setHide(true)
         onClosed(true)
     }
-
     const handleConfirm = () => {
         onConfirmed(true)
     }
@@ -66,11 +66,13 @@ export default function Modal(
 
     return (
         <>
-            <div
+            <span
                 style={{
                     color: '#000',
                     position: 'fixed',
                     transition: 'all .3s',
+                    display: 'inline-block',
+                    width: 'auto',
                     zIndex: +zIndex + 1,
                     top: (function (): any {
                         if (position != 'bottom' && position != 'center') {
@@ -89,7 +91,6 @@ export default function Modal(
                                 return '50%'
                             }
                         }
-
                     }()),
                     right: (function (): any {
                         if (position == 'bottom' || position == 'top' || position == 'right') {
@@ -127,10 +128,14 @@ export default function Modal(
                     ...style
                 }}
             >
-                <MdClose
-                    onClick={handleClose}
-                    style={{ fontSize: '1rem', fontWeight: 'bold', color: iconColor, position: 'absolute', right: '0', top: '0', cursor: 'pointer' }}
-                />
+                {
+                    showCloseButton ?
+                        <MdClose
+                            onClick={handleClose}
+                            style={{ fontSize: '1rem', fontWeight: 'bold', color: iconColor, position: 'absolute', right: '0', top: '0', cursor: 'pointer' }}
+                        /> : ''
+                }
+
                 {
                     position == "center" || position == "top" || position == "bottom" ?
                         <div style={{ background }}>
@@ -138,14 +143,14 @@ export default function Modal(
                             {
                                 showActions ?
                                     <div style={{ display: 'flex', justifyContent: 'end', gap: '10px', padding: '5px' }}>
-                                        <div onClick={handleCancel} style={{ padding: '5px 15px', background: cancelBtnColor, cursor: 'pointer', fontWeight: 'bold', color: actionButtonTextColor, borderRadius: '5px' }}>Cancel</div>
-                                        <div onClick={handleConfirm} style={{ padding: '5px 15px', background: confirmBtnColor, cursor: 'pointer', fontWeight: 'bold', color: actionButtonTextColor, borderRadius: '5px' }}>Confirm</div>
+                                        <div onClick={handleCancel} style={{ padding: '5px 15px', background: cancelButtonColor, cursor: 'pointer', fontWeight: 'bold', color: actionButtonTextColor, borderRadius: '5px' }}>Cancel</div>
+                                        <div onClick={handleConfirm} style={{ padding: '5px 15px', background: confirmButtonColor, cursor: 'pointer', fontWeight: 'bold', color: actionButtonTextColor, borderRadius: '5px' }}>Confirm</div>
                                     </div> : ''
                             }
                         </div> :
                         <div style={{ background }}>{children}</div>
                 }
-            </div>
+            </span>
 
             {/* overlay */}
             <div onClick={() => overlayClose ? handleClose() : ''} style={{ transition: 'all .3s', position: 'fixed', zIndex, top: 0, left: 0, bottom: 0, right: 0, background: `rgba(0,0,0,${opacity})`, display: hide ? 'none' : 'block' }}></div>
