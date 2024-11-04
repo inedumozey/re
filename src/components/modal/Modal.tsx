@@ -69,6 +69,7 @@ export default function Modal(
             <div
                 style={{
                     color: '#000',
+                    overflowY: 'auto',
                     position: 'fixed',
                     transition: 'all .3s',
                     zIndex: +zIndex + 1,
