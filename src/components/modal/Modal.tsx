@@ -72,6 +72,8 @@ export default function Modal(
                     position: 'fixed',
                     transition: 'all .3s',
                     zIndex: +zIndex + 1,
+                    maxHeight: '100vh',
+                    overflowY: 'auto',
                     top: (function (): any {
                         if (position != 'bottom' && position != 'center') {
                             return '0'
@@ -151,7 +153,7 @@ export default function Modal(
             </div>
 
             {/* overlay */}
-            <div onClick={() => overlayClose ? handleClose() : ''} style={{ overflowY: 'auto', transition: 'all .3s', position: 'fixed', zIndex, top: 0, left: 0, bottom: 0, right: 0, background: `rgba(0,0,0,${opacity})`, display: hide ? 'none' : 'block' }}></div>
+            <div onClick={() => overlayClose ? handleClose() : ''} style={{ transition: 'all .3s', position: 'fixed', zIndex, top: 0, left: 0, bottom: 0, right: 0, background: `rgba(0,0,0,${opacity})`, display: hide ? 'none' : 'block' }}></div>
         </>
     )
 }
