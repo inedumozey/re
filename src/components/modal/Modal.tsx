@@ -73,7 +73,7 @@ export default function Modal(
                     transition: 'all .3s',
                     zIndex: +zIndex + 1,
                     maxHeight: '100vh',
-                    overflowY: 'auto',
+                    // overflowY: 'auto',
                     top: (function (): any {
                         if (position != 'bottom' && position != 'center') {
                             return '0'
