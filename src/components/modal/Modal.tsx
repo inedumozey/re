@@ -82,7 +82,7 @@ export default function Modal(
                                     return '100%'
                                 }
                                 else {
-                                    return '-100%'
+                                    return '-150%'
                                 }
                             }
                             else {
